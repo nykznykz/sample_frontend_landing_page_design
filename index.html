@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    <title>Sentinel - From Chaos to Clarity</title>
+    <meta name="description" content="A cinematic journey through complex system analysis." />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              display: ['Space Grotesk', 'sans-serif'],
+            },
+            colors: {
+              background: '#030304',
+              surface: '#0A0A0C',
+              primary: '#FFFFFF',
+              secondary: '#888888',
+              accent: '#3B82F6',
+              success: '#10B981',
+              danger: '#EF4444',
+            },
+            transitionTimingFunction: {
+              'cinematic': 'cubic-bezier(0.25, 0.1, 0.25, 1)',
+              'snap': 'cubic-bezier(0.8, 0, 0.2, 1)',
+            },
+            backgroundImage: {
+              'grid-pattern': "linear-gradient(to right, #1f1f1f 1px, transparent 1px), linear-gradient(to bottom, #1f1f1f 1px, transparent 1px)",
+              'scan-gradient': "linear-gradient(to bottom, rgba(59, 130, 246, 0) 0%, rgba(59, 130, 246, 0.5) 50%, rgba(59, 130, 246, 0) 100%)",
+            },
+            keyframes: {
+              'drift': {
+                '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                '50%': { transform: 'translateY(-10px) rotate(1deg)' }
+              },
+              'pulse-subtle': {
+                '0%, 100%': { opacity: '0.4' },
+                '50%': { opacity: '0.6' }
+              },
+              'dash-flow': {
+                '0%': { strokeDashoffset: '1000' },
+                '100%': { strokeDashoffset: '0' }
+              },
+              'packet-flow': {
+                '0%': { offsetDistance: '0%' },
+                '100%': { offsetDistance: '100%' }
+              },
+              'scan-line': {
+                '0%': { top: '-10%', opacity: '0' },
+                '10%': { opacity: '1' },
+                '90%': { opacity: '1' },
+                '100%': { top: '110%', opacity: '0' }
+              },
+              'glitch': {
+                '0%': { transform: 'translate(0)' },
+                '20%': { transform: 'translate(-2px, 2px)' },
+                '40%': { transform: 'translate(-2px, -2px)' },
+                '60%': { transform: 'translate(2px, 2px)' },
+                '80%': { transform: 'translate(2px, -2px)' },
+                '100%': { transform: 'translate(0)' }
+              }
+            },
+            animation: {
+              'drift': 'drift 8s ease-in-out infinite',
+              'pulse-subtle': 'pulse-subtle 4s ease-in-out infinite',
+              'dash-flow': 'dash-flow 3s linear infinite',
+              'scan': 'scan-line 2s linear infinite',
+              'glitch': 'glitch 0.2s cubic-bezier(.25, .46, .45, .94) both infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body::-webkit-scrollbar { display: none; }
+      body {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        background-color: #030304;
+        color: white;
+        overflow-x: hidden;
+      }
+      
+      html.lenis, html.lenis body { height: auto; }
+      .lenis.lenis-smooth { scroll-behavior: auto !important; }
+      .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+      .lenis.lenis-stopped { overflow: hidden; }
+      
+      /* Film Grain */
+      .film-grain {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.05;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+      }
+      
+      /* CSS for Motion Path animation (not fully supported in Tailwind config yet) */
+      .animate-packet {
+        offset-path: path("M 30 0 C 30 40, 50 40, 50 100");
+        animation: packet-flow 3s linear infinite;
+      }
+      .animate-packet-2 {
+         offset-path: path("M 50 0 C 50 40, 50 40, 50 100");
+         animation: packet-flow 4s linear infinite;
+      }
+      .animate-packet-3 {
+         offset-path: path("M 70 0 C 70 40, 50 40, 50 100");
+         animation: packet-flow 2.5s linear infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://esm.sh/lucide-react@^0.560.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lenis": "https://esm.sh/lenis@^1.3.16",
+    "framer-motion": "https://esm.sh/framer-motion@10.16.4",
+    "animejs": "https://esm.sh/animejs@3.2.2"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <div class="film-grain"></div>
+  </body>
+</html>
